@@ -59,4 +59,9 @@ public class EmployeeRepo {
         return result;
     }
 
+    public Employee findByEmailId(String email) {
+        Employee emp = employees.stream().filter(e -> e.getEmail().equals(email)).findFirst().get();
+        return emp;
+    }
+
 }

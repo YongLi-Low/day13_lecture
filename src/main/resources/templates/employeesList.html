@@ -41,7 +41,7 @@
                     <td data-th-text="${emp.postalCode}"></td>
                     <td>
                         <a th:href="@{#}">Update</a>  <!-- "@{#}" is a placeholder for a hyperlink-->
-                        <a th:href="@{#}">Delete</a>
+                        <a th:href="@{/employees/deleteEmployee/{email}(email=${emp.email})}">Delete</a>
                     </td>
                 </tr>
             </tbody>

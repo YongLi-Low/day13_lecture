@@ -43,6 +43,8 @@ public class Employee {
     private String address;
     
     @Digits(fraction = 0, integer = 6, message = "Postal code format: 345678")
+    @Min(value = 000000, message = "Postal code must be 6 digits")
+    @Max(value = 999999, message = "Postal code must be 6 digits")
     private Integer postalCode;
     
     public String getFirstName() {
