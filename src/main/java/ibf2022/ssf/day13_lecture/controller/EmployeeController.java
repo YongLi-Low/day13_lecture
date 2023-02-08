@@ -1,5 +1,6 @@
 package ibf2022.ssf.day13_lecture.controller;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class EmployeeController {
 
     @PostMapping("/addnew")
     // @ModelAttribute bind the data from the Form and the object from the Form is "employee"
-    public String addEmployee(@Valid @ModelAttribute("employee") Employee employeeForm, BindingResult binding, Model model) {
+    public String addEmployee(@Valid @ModelAttribute("employee") Employee employeeForm, BindingResult binding, Model model) throws FileNotFoundException{
 
         if (binding.hasErrors()) {
             return "employeeadd";  // display the error on the form

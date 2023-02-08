@@ -1,5 +1,10 @@
 package ibf2022.ssf.day13_lecture.repository;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +20,9 @@ import ibf2022.ssf.day13_lecture.model.Employee;
 @Repository
 public class EmployeeRepo {
 
+    final String dirPath = "/Users/yongli/data";
+    final String filename = "employee.txt";
+    
     private List<Employee> employees;
 
     public EmployeeRepo() throws ParseException{
@@ -39,8 +47,16 @@ public class EmployeeRepo {
         return employees;
     }
 
-    public Boolean save(Employee employee) {
+    public Boolean save(Employee employee) throws FileNotFoundException{
         Boolean result = employees.add(employee);
+
+        File f = new File(dirPath + "/" + filename);
+        OutputStream os = new FileOutputStream(f, true);
+        PrintWriter pw = new PrintWriter(os);
+        pw.println(employee.toString());  // Should be comma delimited rather than String
+        pw.flush();
+        pw.close();
+
         return result;
     }
 
