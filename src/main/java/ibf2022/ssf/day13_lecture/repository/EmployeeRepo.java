@@ -64,4 +64,17 @@ public class EmployeeRepo {
         return emp;
     }
 
+    public Boolean updateEmployee(Employee em) {
+        Employee emp = employees.stream().filter(e -> e.getEmail().equals(e.getEmail())).findFirst().get();
+
+        int employeeIndex = employees.indexOf(emp);
+
+        if (employeeIndex >= 0) {
+            employees.remove(employeeIndex);
+        }
+
+        employees.add(em);
+        return true;
+    }
+
 }
