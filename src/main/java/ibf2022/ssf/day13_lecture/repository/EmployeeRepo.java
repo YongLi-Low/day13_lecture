@@ -1,6 +1,7 @@
 package ibf2022.ssf.day13_lecture.repository;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class EmployeeRepo {
 
     private List<Employee> employees;
 
-    public EmployeeRepo() {
+    public EmployeeRepo() throws ParseException{
         if (employees == null) {
             employees = new ArrayList<>();
         }
@@ -25,10 +26,12 @@ public class EmployeeRepo {
         Date dt = df.parse("1991-06-15");
         Employee emp = new Employee("Derrick", "Tan", "derrick@gmail.com", 
         "91710922", 7500, dt, "10 Ghim Moh", 272210);
+        employees.add(emp);
 
         dt = df.parse("1991-04-06");
-        Employee emp = new Employee("Andy", "Lau", "andy@gmail.com", 
+        emp = new Employee("Andy", "Lau", "andy@gmail.com", 
         "92994399", 8500, dt, "28 Ghim Moh", 272228);
+        employees.add(emp);
     }
     
     public List<Employee> findAll() {
